@@ -5,7 +5,12 @@ const Miles = () => {
     <div
       className="relative w-full h-[500px] bg-cover bg-center"
       style={{
-        backgroundImage: 'url("/images/GlCars_Miles_Section_Img.webp")', // Replace with your image URL
+        backgroundImage: 'url("/images/GlCars_Miles_Section_Img.webp")',
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        backgroundRepeat: "no-repeat",
+        position: "relative",
+        padding: "4rem 0", // Replace with your image URL
       }}
     >
       {/* Overlay to darken the image for better text visibility */}

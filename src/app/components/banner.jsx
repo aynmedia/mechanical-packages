@@ -53,6 +53,8 @@ const Banner = () => {
         backgroundSize: "cover",
         backgroundPosition: "center",
         backgroundRepeat: "no-repeat",
+         position: "relative",
+        padding: "4rem 0"
       }}
       className="text-white py-8 px-4 md:flex md:items-center md:justify-between md:px-10 lg:gap-10"
     >

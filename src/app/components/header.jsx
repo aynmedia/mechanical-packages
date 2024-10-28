@@ -7,7 +7,7 @@ const Header = () => {
     <header className="bg-gray-800 text-white p-4 flex justify-between items-center sticky top-0 left-0  z-50">
       {/* Logo */}
       <div className="flex items-center cursor-pointer">
-        <img
+        <Image
           src="images/GLCars.webp"
           alt="Logo"
           width={100}
