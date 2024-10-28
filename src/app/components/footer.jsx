@@ -10,8 +10,8 @@ const Footer = () => {
         {/* Column 1 - About Us */}
         <div className="flex flex-col">
           <img
-            src="/images/GLCars.webp"
-            alt="GLCars Logo"
+            src="/images/Header_Logo.webp"
+            alt="Footer_Logo"
             width={200}
             height={80}
             className="w-40 h-auto mb-4"
