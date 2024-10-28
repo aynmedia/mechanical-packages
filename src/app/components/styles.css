@@ -1,0 +1,32 @@
+@import url("https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Lato", sans-serif;
+}
+
+/* Banner Section Image  */
+.bgimg {
+  background-image: url("/images/GlCars_Landing_Page_BG_Img.webp");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+/* Miles Section Image  */
+.milesbg {
+  background-image: url("/images/GlCars_Miles_Section_Img.webp");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+/* Common GLCars Services Section  */
+.bgimg2 {
+  background-image: url("/images/Why_GlCars_FAQ.webp");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  
+}
