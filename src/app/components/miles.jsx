@@ -11,6 +11,17 @@ const Miles = () => {
         position: "relative",
       }}
     >
+      {/* Overlay to darken the image for better text visibility */}
+      <div
+        style={{
+          position: "absolute",
+          top: 0,
+          left: 0,
+          right: 0,
+          bottom: 0,
+          backgroundColor: "rgba(0, 0, 0, 0.75)", // Adjust opacity for overlay
+        }}
+      ></div>
       <div className="relative w-full h-[500px] bg-cover bg-center">
         {/* Overlay to darken the image for better text visibility */}
         <div className="absolute inset-0 bg-black opacity-50"></div>
