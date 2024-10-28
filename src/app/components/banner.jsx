@@ -60,7 +60,7 @@ const Banner = () => {
 
       <div
         id="contact-form"
-        className="text-white py-8 px-4 md:flex md:items-center md:justify-between md:px-10 lg:gap-10"
+        className="relative z-10 text-white py-8 px-4 md:flex md:items-center md:justify-between md:px-10 lg:gap-10"
       >
         {/* Content Section */}
         <div className="md:w-1/2 lg:w-2/6 xl:w-2/6 ">
