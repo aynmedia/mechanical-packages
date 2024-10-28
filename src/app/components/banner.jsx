@@ -56,6 +56,8 @@ const Banner = () => {
         padding: "4rem 0", // Adjust padding as needed
       }}
     >
+      <div className="absolute inset-0 bg-black opacity-50"></div>
+
       <div
         id="contact-form"
         className="text-white py-8 px-4 md:flex md:items-center md:justify-between md:px-10 lg:gap-10"
