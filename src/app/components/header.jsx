@@ -2,12 +2,13 @@ import React from "react";
 import Image from "next/image";
 import "./styles.css";
 const Header = () => {
+  
   return (
     <header className="bg-gray-800 text-white p-4 flex justify-between items-center sticky top-0 left-0  z-50">
       {/* Logo */}
       <div className="flex items-center cursor-pointer">
         <img
-          src="/images/GLCars.webp"
+          src="images/GLCars.webp"
           alt="Logo"
           width={100}
           height={40}

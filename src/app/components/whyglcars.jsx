@@ -1,13 +1,35 @@
 import React from "react";
+// import BGImage from "..//..//../public/images/Why_GLCars_FAQ.webp"; // Adjust the path to your image
 
 const WhyGLCars = () => {
   return (
-    <section className="relative bgimg2  bg-cover bg-center">
+    <section
+      style={{
+        backgroundImage: `url("/images/Why_GLCars_FAQ.webp")`, // Directly reference the image from public folder
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        backgroundRepeat: "no-repeat",
+        position: "relative",
+        padding: "4rem 0", // Adjust padding as needed
+      }}
+    >
       {/* Overlay to darken the image for better text visibility */}
-      <div className="absolute inset-0 bg-black opacity-75"></div>
+      <div
+        style={{
+          position: "absolute",
+          top: 0,
+          left: 0,
+          right: 0,
+          bottom: 0,
+          backgroundColor: "rgba(0, 0, 0, 0.75)", // Adjust opacity for overlay
+        }}
+      ></div>
 
-      {/* Content inside the banner */}
+     
       <div className="relative z-10 container mx-auto p-4 text-white">
+        <div className="mb-4">
+        </div>
+
         <h1 className="text-3xl text-center font-bold mb-4">
           Why Choose GLCars in Bangalore
         </h1>
