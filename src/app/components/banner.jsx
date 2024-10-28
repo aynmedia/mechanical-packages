@@ -56,17 +56,6 @@ const Banner = () => {
         padding: "4rem 0",
       }}
     >
-      {/* Overlay to darken the image for better text visibility */}
-      <div
-        style={{
-          position: "absolute",
-          top: 0,
-          left: 0,
-          right: 0,
-          bottom: 0,
-          backgroundColor: "rgba(0, 0, 0, 0.75)", // Adjust opacity for overlay
-        }}
-      ></div>
       <div
         id="contact-form"
         className="text-white py-8 px-4 md:flex md:items-center md:justify-between md:px-10 lg:gap-10"
