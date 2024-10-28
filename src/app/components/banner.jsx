@@ -49,7 +49,7 @@ const Banner = () => {
     <div
       id="contact-form"
       style={{
-        backgroundImage: 'url("/images/GlCars_Landing_Page_BG_Img.webp")',
+        backgroundImage: `url("/images/GlCars_Landing_Page_BG_Img.webp")`,
         backgroundSize: "cover",
         backgroundPosition: "center",
         backgroundRepeat: "no-repeat",
