@@ -8,7 +8,7 @@ const Header = () => {
       {/* Logo */}
       <div className="flex items-center cursor-pointer">
         <Image
-          src="images/GLCars.webp"
+          src="/images/GLCars.webp"
           alt="Logo"
           width={100}
           height={40}
