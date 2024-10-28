@@ -48,12 +48,12 @@ const Banner = () => {
   return (
     <section
       style={{
-        backgroundImage: `url("public/GlCars_Landing_Page_BG_Img.webp")`,
+        backgroundImage: `url("/images/Why_GLCars_FAQ.webp")`, // Directly reference the image from public folder
         backgroundSize: "cover",
         backgroundPosition: "center",
         backgroundRepeat: "no-repeat",
         position: "relative",
-        padding: "4rem 0",
+        padding: "4rem 0", // Adjust padding as needed
       }}
     >
       <div

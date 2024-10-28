@@ -4,11 +4,12 @@ const Miles = () => {
   return (
     <section
       style={{
-        backgroundImage: `url("/images/GlCars_Miles_Section_Img.webp")`,
+        backgroundImage: `url("/images/Why_GLCars_FAQ.webp")`, // Directly reference the image from public folder
         backgroundSize: "cover",
         backgroundPosition: "center",
         backgroundRepeat: "no-repeat",
         position: "relative",
+        padding: "4rem 0", // Adjust padding as needed
       }}
     >
       <div className="relative w-full h-[500px] bg-cover bg-center">
