@@ -4,7 +4,7 @@ const Miles = () => {
   return (
     <section
       style={{
-        backgroundImage: `url("/images/Why_GLCars_FAQ.webp")`, // Directly reference the image from public folder
+        backgroundImage: `url("/images/GLCars_Miles_Img.webp")`, // Directly reference the image from public folder
         backgroundSize: "cover",
         backgroundPosition: "center",
         backgroundRepeat: "no-repeat",
