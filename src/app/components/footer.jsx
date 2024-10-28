@@ -9,7 +9,7 @@ const Footer = () => {
       <div className="container mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 px-4">
         {/* Column 1 - About Us */}
         <div className="flex flex-col">
-          <img
+          <Image
             src="/images/Header_Logo.webp"
             alt="Footer_Logo"
             width={200}
