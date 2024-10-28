@@ -12,9 +12,9 @@ const Miles = () => {
         padding: "4rem 0", // Adjust padding as needed
       }}
     >
+      <div className="absolute inset-0 bg-black opacity-50"></div>
       <div className="relative w-full h-[500px] bg-cover bg-center">
         {/* Overlay to darken the image for better text visibility */}
-        <div className="absolute inset-0 bg-black opacity-50"></div>
 
         {/* Content inside the banner */}
         <div className="relative z-10 flex flex-col items-center justify-center h-full text-center text-white px-4">
