@@ -25,10 +25,8 @@ const WhyGLCars = () => {
         }}
       ></div>
 
-     
       <div className="relative z-10 container mx-auto p-4 text-white">
-        <div className="mb-4">
-        </div>
+        <div className="mb-4"></div>
 
         <h1 className="text-3xl text-center font-bold mb-4">
           Why Choose GLCars in Bangalore
@@ -141,18 +139,20 @@ const WhyGLCars = () => {
         </section>
 
         {/* Conclusion Section */}
-        <h2 className="text-2xl font-semibold mb-2">Conclusion</h2>
-        <p className="mb-4">
-          Choosing GLCars in Bangalore means opting for a reliable,
-          customer-focused car rental experience that prioritizes safety,
-          convenience, and satisfaction. Our extensive fleet, competitive
-          pricing, and exceptional service set us apart in the bustling car
-          rental market. Whether you&apos;re a local or a visitor, we are
-          committed to making your journey memorable and enjoyable. Experience
-          the GLCars difference—where quality meets affordability and every ride
-          is an adventure waiting to happen. Book with us today and explore
-          Bangalore your way!
-        </p>
+        <div className="mt-10">
+          <h2 className="text-2xl font-semibold mb-2">Conclusion</h2>
+          <p className="mb-4">
+            Choosing GLCars in Bangalore means opting for a reliable,
+            customer-focused car rental experience that prioritizes safety,
+            convenience, and satisfaction. Our extensive fleet, competitive
+            pricing, and exceptional service set us apart in the bustling car
+            rental market. Whether you&apos;re a local or a visitor, we are
+            committed to making your journey memorable and enjoyable. Experience
+            the GLCars difference—where quality meets affordability and every
+            ride is an adventure waiting to happen. Book with us today and
+            explore Bangalore your way!
+          </p>
+        </div>
       </div>
     </section>
   );
