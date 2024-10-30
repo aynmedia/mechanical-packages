@@ -9,6 +9,7 @@ const Banner = () => {
     email: "",
     phone: "",
     message: "",
+    vehicleType: "", // New field for vehicle type
   });
 
   const [isSubmitted, setIsSubmitted] = useState(false);
@@ -20,6 +21,7 @@ const Banner = () => {
     email: "",
     phone: "",
     message: "",
+    vehicleType: "", // New field for vehicle type errors
   });
 
   const handleChange = (e) => {
@@ -48,19 +50,25 @@ const Banner = () => {
     } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
       newErrors.email = "Email is invalid";
     }
+
     // Phone number validation
     if (!formData.phone) {
       newErrors.phone = "Phone number is required";
     } else if (!/^\d{10}$/.test(formData.phone)) {
-      
       newErrors.phone = "Phone number must be 10 digits";
     }
+
+    // Vehicle type validation
+    if (!formData.vehicleType) {
+      newErrors.vehicleType = "Vehicle type is required";
+    }
+
     if (!formData.message) {
       newErrors.message = "Message is required";
     }
 
     setErrors(newErrors);
-    return Object.keys(newErrors).length === 0; // Returns true if no errors
+    return Object.keys(newErrors).length === 0;
   };
 
   const handleSubmit = (e) => {
@@ -68,7 +76,7 @@ const Banner = () => {
 
     // Validate the form
     if (!validateForm()) {
-      return; // If validation fails, do not proceed
+      return;
     }
 
     // Prepare EmailJS parameters
@@ -77,10 +85,12 @@ const Banner = () => {
       email: formData.email,
       phone: formData.phone,
       message: formData.message,
+      vehicleType: formData.vehicleType, // Include vehicle type in the email
     };
 
     // Sending email using EmailJS
-    emailjs.send(
+    emailjs
+      .send(
         "service_aauygfh",
         "template_pejk3xd",
         emailParams,
@@ -98,8 +108,9 @@ const Banner = () => {
           setFormData({
             name: "",
             email: "",
-            phone: "", // Reset phone field
+            phone: "",
             message: "",
+            vehicleType: "", // Reset vehicle type field
           });
           setTimeout(() => {
             setIsSubmitted(false);
@@ -170,7 +181,7 @@ const Banner = () => {
                   value={formData.name}
                   onChange={handleChange}
                   required
-                  className="w-full border text-black border-gray-300 p-2 rounded"
+                  className="w-full border text-black border-gray-300 outline-none p-2 rounded"
                 />
                 {errors.name && <p className="text-red-500">{errors.name}</p>}
               </div>
@@ -184,7 +195,7 @@ const Banner = () => {
                   value={formData.email}
                   onChange={handleChange}
                   required
-                  className="w-full border text-black border-gray-300 p-2 rounded"
+                  className="w-full border text-black border-gray-300 outline-none p-2 rounded"
                 />
                 {errors.email && <p className="text-red-500">{errors.email}</p>}
               </div>
@@ -198,10 +209,39 @@ const Banner = () => {
                   value={formData.phone}
                   onChange={handleChange}
                   required
-                  className="w-full border text-black border-gray-300 p-2 rounded"
+                  className="w-full border text-black border-gray-300 outline-none p-2 rounded"
                 />
                 {errors.phone && <p className="text-red-500">{errors.phone}</p>}
               </div>
+
+              {/* Vehicle Type Dropdown */}
+              <div className="mb-4">
+                <label
+                  className="block text-gray-700 mb-1"
+                  htmlFor="vehicleType"
+                >
+                  Vehicle Type
+                </label>
+                <select
+                  name="vehicleType"
+                  value={formData.vehicleType}
+                  onChange={handleChange}
+                  required
+                  className="w-full border text-gray-700 border-gray-300 outline-none p-2 rounded"
+                >
+                  <option selected disabled hidden value="">Select your vehicle type</option>
+                  <option value="Sedan">Sedan</option>
+                  <option value="SUV">SUV</option>
+                  <option value="Hatchback">Hatchback</option>
+                  <option value="Convertible">Convertible</option>
+                  <option value="Coupe">Coupe</option>
+                  <option value="Crossover">Crossover</option>
+                </select>
+                {errors.vehicleType && (
+                  <p className="text-red-500">{errors.vehicleType}</p>
+                )}
+              </div>
+
               <div className="mb-4">
                 <label className="block text-gray-700 mb-1" htmlFor="message">
                   Message
@@ -212,7 +252,7 @@ const Banner = () => {
                   onChange={handleChange}
                   required
                   rows="4"
-                  className="w-full border text-black border-gray-300 p-2 rounded"
+                  className="w-full border text-black border-gray-300 outline-none p-2 rounded"
                 />
                 {errors.message && (
                   <p className="text-red-500">{errors.message}</p>
