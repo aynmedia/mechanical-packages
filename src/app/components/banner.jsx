@@ -15,7 +15,7 @@ const Banner = () => {
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isError, setIsError] = useState(false);
 
-  // New state for validation errors
+  // State for validation errors
   const [errors, setErrors] = useState({
     name: "",
     email: "",
@@ -52,10 +52,12 @@ const Banner = () => {
     }
 
     // Phone number validation
-    if (!formData.phone) {
+    const trimmedPhone = formData.phone.trim(); // Trim whitespace
+    if (!trimmedPhone) {
       newErrors.phone = "Phone number is required";
-    } else if (!/^\d{10}$/.test(formData.phone)) {
-      newErrors.phone = "Phone number must be 10 digits";
+    } else if (!/^\d{10}$/.test(trimmedPhone)) {
+      newErrors.phone =
+        "Phone number must be 10 digits and cannot contain any characters";
     }
 
     // Vehicle type validation
@@ -210,6 +212,7 @@ const Banner = () => {
                   onChange={handleChange}
                   required
                   className="w-full border text-black border-gray-300 outline-none p-2 rounded"
+                  maxLength="10" // Limit input to 10 digits
                 />
                 {errors.phone && <p className="text-red-500">{errors.phone}</p>}
               </div>
@@ -229,7 +232,9 @@ const Banner = () => {
                   required
                   className="w-full border text-gray-700 border-gray-300 outline-none p-2 rounded"
                 >
-                  <option selected disabled hidden value="">Select your vehicle type</option>
+                  <option value="" disabled>
+                    Select your vehicle type
+                  </option>
                   <option value="Sedan">Sedan</option>
                   <option value="SUV">SUV</option>
                   <option value="Hatchback">Hatchback</option>
