@@ -92,10 +92,6 @@ const WhyGLCars = () => {
           </h2>
           <ul className="list-disc pl-5 mb-4">
             <li>
-              <strong>Easy Online Booking:</strong> Quick and convenient online
-              booking system available anytime.
-            </li>
-            <li>
               <strong>24/7 Customer Support:</strong> Our support team is always
               ready to assist you.
             </li>
@@ -140,23 +136,6 @@ const WhyGLCars = () => {
             <li>
               <strong>Positive Reviews:</strong> GLCars is highly rated by
               customers for its professionalism and efficiency.
-            </li>
-          </ul>
-        </section>
-
-        {/* Flexible Rental Options Section */}
-        <section>
-          <h2 className="text-2xl font-semibold mb-2">
-            6. Flexible Rental Options
-          </h2>
-          <ul className="list-disc pl-5 mb-4">
-            <li>
-              <strong>Hourly, Daily, and Weekly Plans:</strong> Rent a vehicle
-              based on your schedule, with short- and long-term options.
-            </li>
-            <li>
-              <strong>Customizable Packages:</strong> Tailor rental plans to fit
-              your needs, whether it’s a quick trip or an extended stay.
             </li>
           </ul>
         </section>

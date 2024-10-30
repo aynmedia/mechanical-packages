@@ -47,7 +47,7 @@ const FAQ = () => {
 
   return (
     <div className="p-4 max-w-4xl mx-auto mt-10 pb-10">
-      <h1 className="text-4xl font-bold text-center mb-8">
+      <h1 className="text-4xl font-bold  mb-8">
         Common GLCars Services Questions in Bangalore
       </h1>
       {faqs.map((faq, index) => (

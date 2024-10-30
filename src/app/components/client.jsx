@@ -6,25 +6,25 @@ const howGLCarsWorksData = [
     id: 1,
     number: "10,000+",
     title: "Happy Customers",
-    logo: "/images/Happy_Customers_Img.jpg", // Replace with your actual image path
+    logo: "/images/Happy_Customers_Img.webp", // Replace with your actual image path
   },
   {
     id: 2,
     number: "1,500+",
     title: "Cars Available",
-    logo: "/images/Cars_Available.jpg", // Replace with your actual image path
+    logo: "/images/Cars_Available.webp", // Replace with your actual image path
   },
   {
     id: 3,
     number: "24/7",
     title: "Customer Support",
-    logo: "/images/24x7_Customer_Support.jpg", // Replace with your actual image path
+    logo: "/images/24x7_Customer_Support.webp", // Replace with your actual image path
   },
   {
     id: 4,
     number: "98%",
     title: "Satisfaction Rate",
-    logo: "/images/Satisfaction_Rate.png",
+    logo: "/images/Satisfaction_Rate_Updated.webp",
   },
 ];
 
@@ -43,7 +43,7 @@ const Client = () => {
                 src={item.logo}
                 alt={item.title}
                 width={100} // Set width as per your design
-                height={100} // Set height as per your design
+                height={200} // Set height as per your design
                 className="mb-4 rounded-lg"
               />
               <h2 className="text-3xl font-bold text-blue-600">

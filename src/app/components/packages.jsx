@@ -1,6 +1,8 @@
 "use client";
 import React, { useState } from "react";
+import { useRouter } from "next/router"; // Import useRouter for navigation
 import Image from "next/image";
+
 const packagesData = [
   {
     id: 1,
@@ -161,9 +163,19 @@ const packagesData = [
 
 const Packages = () => {
   const [expandedPackage, setExpandedPackage] = useState(null);
+  const [visibleFeatures, setVisibleFeatures] = useState(3);
 
   const togglePackage = (id) => {
     setExpandedPackage(expandedPackage === id ? null : id);
+    setVisibleFeatures(3); 
+  };
+
+  const handleLoadMore = () => {
+    setVisibleFeatures((prevVisible) => prevVisible + 5); 
+  };
+
+  const handleBookNow = () => {
+    router.push("/booking-form"); 
   };
 
   return (
@@ -185,13 +197,21 @@ const Packages = () => {
             <h2 className="text-2xl font-bold mb-2">{pkg.title}</h2>
             <p className="text-gray-600">{pkg.description}</p>
 
-            {/* Book Now Button triggers toggle */}
-            <div className="mt-4">
+            <div className="mt-4 flex justify-between">
+              {/* Toggle Details */}
               <button
                 onClick={() => togglePackage(pkg.id)}
+                className="ml-2 bg-gray-500 hover:bg-gray-600 text-white py-2 px-4 rounded-lg"
+              >
+                {expandedPackage === pkg.id ? "Hide Details" : "Load More"}
+              </button>
+
+              {/* Book Now button now navigates to the booking form */}
+              <button
+                onClick={handleBookNow}
                 className="bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded-lg"
               >
-                {expandedPackage === pkg.id ? "Hide Details" : "Book Now"}
+                Book Now
               </button>
             </div>
 
@@ -200,10 +220,22 @@ const Packages = () => {
               <div className="mt-4">
                 <h3 className="text-xl font-semibold">Features:</h3>
                 <ul className="list-disc ml-6 mt-2">
-                  {pkg.features.map((feature, index) => (
-                    <li key={index}>{feature}</li>
-                  ))}
+                  {pkg.features
+                    .slice(0, visibleFeatures)
+                    .map((feature, index) => (
+                      <li key={index}>{feature}</li>
+                    ))}
                 </ul>
+
+                {/* Show 'Load More' button if there are more features to display */}
+                {visibleFeatures < pkg.features.length && (
+                  <button
+                    onClick={handleLoadMore}
+                    className="mt-2 text-blue-500 hover:underline"
+                  >
+                    Load More Features
+                  </button>
+                )}
 
                 {/* Pricing Section */}
                 <div className="mt-4">

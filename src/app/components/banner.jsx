@@ -1,59 +1,126 @@
-/** @format */
 "use client";
 import React, { useState } from "react";
+import emailjs from "emailjs-com"; // Import EmailJS
 import "./styles.css";
 
 const Banner = () => {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
+    phone: "",
     message: "",
   });
 
-  const [isSubmitted, setIsSubmitted] = useState(false); // State for submission status
+  const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isError, setIsError] = useState(false);
 
-  // Handle input changes
+  // New state for validation errors
+  const [errors, setErrors] = useState({
+    name: "",
+    email: "",
+    phone: "",
+    message: "",
+  });
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({
       ...formData,
       [name]: value,
     });
-  };
 
-  // Handle form submission
-  const handleSubmit = (e) => {
-    e.preventDefault(); // Prevent default form submission
-
-    // Simulate a form submission
-    console.log("Form submitted:", formData);
-
-    // Show success message
-    setIsSubmitted(true);
-
-    // Optionally reset form after submission
-    setFormData({
-      name: "",
-      email: "",
-      message: "",
+    setErrors({
+      ...errors,
+      [name]: "",
     });
-
-    // You can add API call logic here to save the data to a server
-
-    // Hide the success message after a few seconds
-    setTimeout(() => {
-      setIsSubmitted(false);
-    }, 3000); // Message will disappear after 3 seconds
   };
+
+  const validateForm = () => {
+    let newErrors = {};
+
+    if (!formData.name) {
+      newErrors.name = "Name is required";
+    }
+
+    // Email validation
+    if (!formData.email) {
+      newErrors.email = "Email is required";
+    } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
+      newErrors.email = "Email is invalid";
+    }
+    // Phone number validation
+    if (!formData.phone) {
+      newErrors.phone = "Phone number is required";
+    } else if (!/^\d{10}$/.test(formData.phone)) {
+      
+      newErrors.phone = "Phone number must be 10 digits";
+    }
+    if (!formData.message) {
+      newErrors.message = "Message is required";
+    }
+
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0; // Returns true if no errors
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    // Validate the form
+    if (!validateForm()) {
+      return; // If validation fails, do not proceed
+    }
+
+    // Prepare EmailJS parameters
+    const emailParams = {
+      name: formData.name,
+      email: formData.email,
+      phone: formData.phone,
+      message: formData.message,
+    };
+
+    // Sending email using EmailJS
+    emailjs.send(
+        "service_aauygfh",
+        "template_pejk3xd",
+        emailParams,
+        "ShreeRam_Gmail"
+      )
+      .then(
+        (response) => {
+          console.log(
+            "Email sent successfully:",
+            response.status,
+            response.text
+          );
+          setIsSubmitted(true);
+          setIsError(false);
+          setFormData({
+            name: "",
+            email: "",
+            phone: "", // Reset phone field
+            message: "",
+          });
+          setTimeout(() => {
+            setIsSubmitted(false);
+          }, 3000);
+        },
+        (error) => {
+          console.error("Failed to send email:", error);
+          setIsError(true);
+        }
+      );
+  };
+
   return (
     <section
       style={{
-        backgroundImage: `url("/images/GLCars_Banner_Img.webp")`, // Directly reference the image from public folder
+        backgroundImage: `url("/images/GLCars_Banner_Img.webp")`,
         backgroundSize: "cover",
         backgroundPosition: "center",
         backgroundRepeat: "no-repeat",
         position: "relative",
-        padding: "4rem 0", // Adjust padding as needed
+        padding: "4rem 0",
       }}
     >
       <div className="absolute inset-0 bg-black opacity-50"></div>
@@ -63,7 +130,7 @@ const Banner = () => {
         className="relative z-10 text-white py-8 px-4 md:flex md:items-center md:justify-between md:px-10 lg:gap-10"
       >
         {/* Content Section */}
-        <div className="md:w-1/2 lg:w-2/6 xl:w-2/6 ">
+        <div className="md:w-1/2 lg:w-2/6 xl:w-2/6">
           <h1 className="text-5xl font-bold mb-4">
             Quality Periodic Maintenance Services
           </h1>
@@ -79,14 +146,17 @@ const Banner = () => {
         </div>
 
         {/* Form Section */}
-        <div className="mt-8 md:w-1/2 lg:w-2/6 md:mt-0 ">
-          <div className="bg-white p-6 rounded-lg shadow-2xl mx-auto w-full md:w-4/6 lg:w-5/6 xl:w-5/6 ">
+        <div className="mt-8 md:w-1/2 lg:w-2/6 md:mt-0">
+          <div className="bg-white p-6 rounded-lg shadow-2xl mx-auto w-full md:w-4/6 lg:w-5/6 xl:w-5/6">
             <h2 className="text-2xl font-bold mb-4 text-black">Contact Us</h2>
             {isSubmitted && (
-              <div className="fixed top-0 left-0 right-0 z-50 flex justify-center">
-                <div className="bg-green-500 text-white p-4 rounded shadow-md">
-                  Form Submitted Successfully
-                </div>
+              <div className="bg-green-500 text-white p-4 rounded mb-4">
+                Form Submitted Successfully
+              </div>
+            )}
+            {isError && (
+              <div className="bg-red-500 text-white p-4 rounded mb-4">
+                Failed to Submit Form
               </div>
             )}
             <form onSubmit={handleSubmit}>
@@ -102,6 +172,7 @@ const Banner = () => {
                   required
                   className="w-full border text-black border-gray-300 p-2 rounded"
                 />
+                {errors.name && <p className="text-red-500">{errors.name}</p>}
               </div>
               <div className="mb-4">
                 <label className="block text-gray-700 mb-1" htmlFor="email">
@@ -115,6 +186,21 @@ const Banner = () => {
                   required
                   className="w-full border text-black border-gray-300 p-2 rounded"
                 />
+                {errors.email && <p className="text-red-500">{errors.email}</p>}
+              </div>
+              <div className="mb-4">
+                <label className="block text-gray-700 mb-1" htmlFor="phone">
+                  Phone
+                </label>
+                <input
+                  type="tel" // Use 'tel' for phone number input
+                  name="phone"
+                  value={formData.phone}
+                  onChange={handleChange}
+                  required
+                  className="w-full border text-black border-gray-300 p-2 rounded"
+                />
+                {errors.phone && <p className="text-red-500">{errors.phone}</p>}
               </div>
               <div className="mb-4">
                 <label className="block text-gray-700 mb-1" htmlFor="message">
@@ -128,9 +214,12 @@ const Banner = () => {
                   rows="4"
                   className="w-full border text-black border-gray-300 p-2 rounded"
                 />
+                {errors.message && (
+                  <p className="text-red-500">{errors.message}</p>
+                )}
               </div>
               <button
-                type="submit" // Submit the form
+                type="submit"
                 className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-700 transition duration-200"
               >
                 Send Message
